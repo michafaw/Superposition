@@ -29,7 +29,7 @@
 
 movementSpeed = 1.0;
 
-lineLength = 500;
+lineLength = 600;
 amplitude = 50;
 frequency = 2.0;
 phase = 0;
@@ -42,10 +42,10 @@ maxFrequency = 5;
 
 linePointArray[0] = 0;
 
-numPointsInLinePointArray = 500;
+numPointsInLinePointArray = 300;
 lineDrawColor = c_green;
 xDrawSpacing = lineLength/numPointsInLinePointArray;
-lineDrawWidth = 5;
+lineDrawWidth = 8;
 </string>
           </argument>
         </arguments>
@@ -140,7 +140,12 @@ for(var i = 1; i &lt; numPointsInLinePointArray; i++) {
   currentX = x + i*xDrawSpacing;
   currentY = y + linePointArray[i];
   //show_debug_message("Drawing line from (" + string(prevX) + ", " + string(prevY) + ")" + " to (" + string(currentX) + ", " + string(currentY) + ")");
-  draw_line_width_colour(prevX, prevY, currentX, currentY, lineDrawWidth, lineDrawColor, c_black);
+  
+  if(abs(currentY - prevY) &gt; lineDrawWidth/2) {
+    draw_line_width_colour(prevX, prevY, currentX, currentY, lineDrawWidth, lineDrawColor, lineDrawColor);
+  }
+  
+  draw_circle_colour(currentX, currentY, lineDrawWidth/2, lineDrawColor, lineDrawColor, false);
   prevX = currentX;
   prevY = currentY;
 }
