@@ -7,6 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sprGrayBox</sprite>
+    <sprite>sprites\sprCollisionBox</sprite>
+    <sprite>sprites\sprBall</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -16,10 +18,14 @@
     <script>scripts\scrSquareWave.gml</script>
     <script>scripts\scrTriangleWave.gml</script>
     <script>scripts\scrBuildLinePointArray.gml</script>
+    <script>scripts\scrBuildTeams.gml</script>
+    <script>scripts\scrSetPlayerLineLength.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objPlayerLine</object>
     <object>objects\objMainSetup</object>
+    <object>objects\objTeamLine</object>
+    <object>objects\objBall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomMain</room>
