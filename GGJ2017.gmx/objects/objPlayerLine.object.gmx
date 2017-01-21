@@ -27,17 +27,20 @@
             <kind>1</kind>
             <string>/// Set up instance variables
 
-startX = x;
-endX = x + 500;
+lineLength = 500;
 amplitude = 100;
 frequency = 1;
 phase = 0;
+
 //lineFunction = scrFlatLine;
 lineFunction = scrSineWave;
 //lineFunction = scrSquareWave;
 
+linePointArray[0] = 0;
+
+numPointsInLinePointArray = 100;
 lineDrawColor = c_green;
-xDrawSpacing = 10;
+xDrawSpacing = lineLength/numPointsInLinePointArray;
 lineDrawWidth = 5;
 </string>
           </argument>
@@ -80,6 +83,29 @@ if(keyboard_check(vk_up)) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Build line data
+
+linePointArray = scrBuildLinePointArray(lineFunction, amplitude, frequency, phase, numPointsInLinePointArray);
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -102,29 +128,18 @@ if(keyboard_check(vk_up)) {
 
 draw_self();
 
-var lineLength = endX - startX;
-
-var prevX = startX;
-var prevT = (prevX - startX)/lineLength;
-var prevY = y + script_execute(lineFunction, amplitude, frequency, phase, prevT);
-
+var prevX = x;
+var prevY = y + linePointArray[0];
 var currentX;
-var currentT;
 var currentY;
-
-
-for(var i = startX + xDrawSpacing; i &lt; endX; i += xDrawSpacing) {
-  currentX = i;
-  currentT = (currentX - startX)/lineLength;
-  currentY = y + script_execute(lineFunction, amplitude, frequency, phase, currentT);
+for(var i = 1; i &lt; numPointsInLinePointArray; i++) {
+  currentX = x + i*xDrawSpacing;
+  currentY = y + linePointArray[i];
   show_debug_message("Drawing line from (" + string(prevX) + ", " + string(prevY) + ")" + " to (" + string(currentX) + ", " + string(currentY) + ")");
-  draw_line_width_colour(prevX, prevY, currentX, currentY, lineDrawWidth, lineDrawColor, lineDrawColor);
-  
+  draw_line_width_colour(prevX, prevY, currentX, currentY, lineDrawWidth, lineDrawColor, c_black);
   prevX = currentX;
-  prevT = currentT;
   prevY = currentY;
 }
-
 </string>
           </argument>
         </arguments>
