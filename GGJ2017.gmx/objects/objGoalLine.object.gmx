@@ -3,7 +3,7 @@
   <spriteName>sprCollisionBox</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>100</depth>
+  <depth>25</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,53 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Instance variables
+            <string>// Set up instance variables
 
 width = room_width - sprite_get_width(sprWall)*2;
-height = 100; // half is up, half is down
-
-teamAlphaXPosition = (room_width - width)/2;
-teamAlphaYPosition = room_height - height/2;
-teamBetaXPosition = (room_width - width)/2;
-teamBetaYPosition = height/2;
-
-boundingBoxYMargin = 10;
-
-
-playerA = noone;
-playerB = noone;
+height = 20; // half is up, half is down
 
 position = -1; // -1 = bottom, 1 = top
 
-
-image_xscale = (width)/sprite_width;
-image_yscale = (height + boundingBoxYMargin*2)/sprite_height;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw bounding box
-
-draw_rectangle_colour(x, y-height/2-boundingBoxYMargin, x+width, y+height/2+boundingBoxYMargin, c_black, c_black, c_black, c_black, false);
-
+image_xscale = width/sprite_width;
+image_yscale = height/sprite_height;
 </string>
           </argument>
         </arguments>

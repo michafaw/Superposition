@@ -6,6 +6,9 @@
 var teamAlpha = instance_create(0, 0, objTeamLine);
 teamAlpha.x = (room_width - teamAlpha.width)/2;
 teamAlpha.y = room_height - teamAlpha.height/2;
+teamAlpha.position = -1; // bottom
+var goalLineAlpha = instance_create(teamAlpha.x, teamAlpha.y, objGoalLine);
+goalLineAlpha.position = teamAlpha.position;
 
 // Player 1
 var player1 = instance_create(teamAlpha.x, teamAlpha.y, objPlayerLine);
@@ -30,6 +33,9 @@ if(numPlayers >= 3) {
 var teamBeta = instance_create(0, 0, objTeamLine);
 teamBeta.x = (room_width - teamBeta.width)/2;
 teamBeta.y = teamBeta.height/2;
+teamBeta.position = 1; // top
+var goalLineBeta = instance_create(teamBeta.x, teamBeta.y, objGoalLine);
+goalLineBeta.position = teamBeta.position;
 
 // Player 2
 var player2 = instance_create(teamBeta.x, teamBeta.y, objPlayerLine);
