@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Instance variables
 
-width = room_width - 100;
+width = room_width - sprite_get_width(sprWall)*2;
 height = 100; // half is up, half is down
 
 teamAlphaXPosition = (room_width - width)/2;

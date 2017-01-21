@@ -9,6 +9,7 @@
     <sprite>sprites\sprGrayBox</sprite>
     <sprite>sprites\sprCollisionBox</sprite>
     <sprite>sprites\sprBall</sprite>
+    <sprite>sprites\sprWall</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -26,6 +27,7 @@
     <object>objects\objMainSetup</object>
     <object>objects\objTeamLine</object>
     <object>objects\objBall</object>
+    <object>objects\objWall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomMain</room>
