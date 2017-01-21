@@ -27,18 +27,22 @@
             <kind>1</kind>
             <string>/// Set up instance variables
 
-lineLength = 500;
-amplitude = 100;
-frequency = 1;
-phase = 0;
+movementSpeed = 1.0;
 
-//lineFunction = scrFlatLine;
+lineLength = 500;
+amplitude = 50;
+frequency = 2.0;
+phase = 0;
 lineFunction = scrSineWave;
-//lineFunction = scrSquareWave;
+
+minFrequency = 2;
+maxFrequency = 5;
+
+
 
 linePointArray[0] = 0;
 
-numPointsInLinePointArray = 100;
+numPointsInLinePointArray = 500;
 lineDrawColor = c_green;
 xDrawSpacing = lineLength/numPointsInLinePointArray;
 lineDrawWidth = 5;
@@ -68,17 +72,19 @@ lineDrawWidth = 5;
 
 // Phase (left/right)
 if(keyboard_check(vk_left)) {
-  phase += -2*pi*0.1;
+  phase += 2*pi*0.01*frequency*movementSpeed;
 } else if(keyboard_check(vk_right)) {
-  phase += 2*pi*0.1;
+  phase += -2*pi*0.01*frequency*movementSpeed;
 }
 
 // Frequency (up/down)
 if(keyboard_check(vk_up)) {
-  frequency += 0.1;
+  frequency += -0.05;
 } else if(keyboard_check(vk_down)) {
-  frequency += -0.1;
+  frequency += 0.05;
 }
+
+frequency = clamp(frequency, minFrequency, maxFrequency);
 </string>
           </argument>
         </arguments>
@@ -126,8 +132,6 @@ linePointArray = scrBuildLinePointArray(lineFunction, amplitude, frequency, phas
             <kind>1</kind>
             <string>/// Draw line function
 
-draw_self();
-
 var prevX = x;
 var prevY = y + linePointArray[0];
 var currentX;
@@ -135,7 +139,7 @@ var currentY;
 for(var i = 1; i &lt; numPointsInLinePointArray; i++) {
   currentX = x + i*xDrawSpacing;
   currentY = y + linePointArray[i];
-  show_debug_message("Drawing line from (" + string(prevX) + ", " + string(prevY) + ")" + " to (" + string(currentX) + ", " + string(currentY) + ")");
+  //show_debug_message("Drawing line from (" + string(prevX) + ", " + string(prevY) + ")" + " to (" + string(currentX) + ", " + string(currentY) + ")");
   draw_line_width_colour(prevX, prevY, currentX, currentY, lineDrawWidth, lineDrawColor, c_black);
   prevX = currentX;
   prevY = currentY;
@@ -163,7 +167,7 @@ for(var i = 1; i &lt; numPointsInLinePointArray; i++) {
             <string>/// Draw phase/frequency above instance
 
 draw_set_colour(lineDrawColor);
-draw_set_halign(fa_right);
+draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 draw_text(x-40, y, "frequency: " + string(frequency) + ", phase: " + string(phase));
 </string>

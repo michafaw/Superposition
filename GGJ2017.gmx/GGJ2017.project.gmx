@@ -14,10 +14,12 @@
     <script>scripts\scrFlatLine.gml</script>
     <script>scripts\scrSineWave.gml</script>
     <script>scripts\scrSquareWave.gml</script>
+    <script>scripts\scrTriangleWave.gml</script>
     <script>scripts\scrBuildLinePointArray.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objPlayerLine</object>
+    <object>objects\objMainSetup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomMain</room>
