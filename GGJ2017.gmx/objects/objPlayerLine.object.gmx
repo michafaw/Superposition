@@ -32,11 +32,50 @@ endX = x + 500;
 amplitude = 100;
 frequency = 1;
 phase = 0;
-lineFunction = scrSineWave; //scrFlatLine;
+//lineFunction = scrFlatLine;
+lineFunction = scrSineWave;
+//lineFunction = scrSquareWave;
 
 lineDrawColor = c_green;
-xDrawSpacing = 20;
+xDrawSpacing = 10;
 lineDrawWidth = 5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check keys to move phase &amp; frequency
+
+// Phase (left/right)
+if(keyboard_check(vk_left)) {
+  phase += -2*pi*0.1;
+} else if(keyboard_check(vk_right)) {
+  phase += 2*pi*0.1;
+}
+
+// Frequency (up/down)
+if(keyboard_check(vk_up)) {
+  frequency += 0.1;
+} else if(keyboard_check(vk_down)) {
+  frequency += -0.1;
+}
 </string>
           </argument>
         </arguments>
@@ -66,7 +105,7 @@ draw_self();
 var lineLength = endX - startX;
 
 var prevX = startX;
-var prevT = (endX - prevX)/lineLength;
+var prevT = (prevX - startX)/lineLength;
 var prevY = y + script_execute(lineFunction, amplitude, frequency, phase, prevT);
 
 var currentX;
@@ -76,7 +115,7 @@ var currentY;
 
 for(var i = startX + xDrawSpacing; i &lt; endX; i += xDrawSpacing) {
   currentX = i;
-  currentT = (endX - currentX)/lineLength;
+  currentT = (currentX - startX)/lineLength;
   currentY = y + script_execute(lineFunction, amplitude, frequency, phase, currentT);
   show_debug_message("Drawing line from (" + string(prevX) + ", " + string(prevY) + ")" + " to (" + string(currentX) + ", " + string(currentY) + ")");
   draw_line_width_colour(prevX, prevY, currentX, currentY, lineDrawWidth, lineDrawColor, lineDrawColor);
@@ -86,6 +125,32 @@ for(var i = startX + xDrawSpacing; i &lt; endX; i += xDrawSpacing) {
   prevY = currentY;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw phase/frequency above instance
+
+draw_set_colour(lineDrawColor);
+draw_set_halign(fa_right);
+draw_set_valign(fa_middle);
+draw_text(x-40, y, "frequency: " + string(frequency) + ", phase: " + string(phase));
 </string>
           </argument>
         </arguments>

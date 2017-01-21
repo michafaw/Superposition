@@ -11,8 +11,9 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scrSineWave.gml</script>
     <script>scripts\scrFlatLine.gml</script>
+    <script>scripts\scrSineWave.gml</script>
+    <script>scripts\scrSquareWave.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objPlayerLine</object>
