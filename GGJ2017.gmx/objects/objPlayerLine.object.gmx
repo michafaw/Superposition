@@ -73,26 +73,7 @@ lineDrawWidth = LINE_WIDTH/2;
             <kind>1</kind>
             <string>/// Check keys to move phase &amp; frequency
 
-
-
 scrCheckControls(self.id, keySet);
-/*
-// Phase (left/right)
-if(keyboard_check(vk_left)) {
-  phase += 2*pi*0.01*frequency*movementSpeed;
-} else if(keyboard_check(vk_right)) {
-  phase += -2*pi*0.01*frequency*movementSpeed;
-}
-
-// Frequency (up/down)
-if(keyboard_check(vk_up)) {
-  frequency += -0.05;
-} else if(keyboard_check(vk_down)) {
-  frequency += 0.05;
-}
-
-frequency = clamp(frequency, minFrequency, maxFrequency);
-*/
 </string>
           </argument>
         </arguments>

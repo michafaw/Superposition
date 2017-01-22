@@ -84,9 +84,14 @@ with(teamInstance) {
     }
     
     // Push ball out one unit of normal vector
-    ballInstance.x += lengthdir_x(COLLISION_PUSHBACK, normalAngle);
-    ballInstance.y += lengthdir_y(COLLISION_PUSHBACK, normalAngle);
-    
+    var centerI = floor(lerp(minimumI, maximumI, 0.5));
+    var centerX = x + centerI*xDrawSpacing;
+    var centerY = y + linePointArray[centerI];
+    var penDistance = ballInstance.radius - point_distance(ballInstance.x, ballInstance.y, centerX, centerY);
+    ballInstance.x += lengthdir_x(penDistance, normalAngle);
+    ballInstance.y += lengthdir_y(penDistance, normalAngle);
+    show_debug_message("            Pushed back to " + string(ballInstance.x) + ", " + string(ballInstance.y));
+    show_debug_message("PenDepth: " + string(penDistance) + " - Pushed back to " + string(ballInstance.x) + ", " + string(ballInstance.y));
     
     ballInstance.direction = scrReflectionAngle(ballInstance.direction, normalAngle);
     

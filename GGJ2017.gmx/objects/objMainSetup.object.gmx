@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Game settings
 
-numPlayers = 2;
+numPlayers = 4;
 </string>
           </argument>
         </arguments>
@@ -96,7 +96,7 @@ instance_create(room_width/2, room_height/2, objBall);
             <kind>1</kind>
             <string>/// Add debugging overlay
 
-show_debug_overlay(true);
+show_debug_overlay(SHOW_DEBUG_OVERLAY);
 </string>
           </argument>
         </arguments>

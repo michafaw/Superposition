@@ -12,11 +12,12 @@ with(playerLineInstance) {
   }
   
   // Frequency (up/down)
-  if(keyboard_check(keySet[2])) {
-    frequency += -0.05;
-  } else if(keyboard_check(keySet[3])) {
-    frequency += 0.05;
+  if(ALLOW_PLAYER_FREQUENCY_CHANGE) {
+    if(keyboard_check(keySet[2])) {
+      frequency += -0.05;
+    } else if(keyboard_check(keySet[3])) {
+      frequency += 0.05;
+    }
   }
-  
   frequency = clamp(frequency, minFrequency, maxFrequency);
 }

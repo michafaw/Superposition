@@ -15,6 +15,7 @@ goalLineAlpha.position = teamAlpha.position;
 var player1 = instance_create(teamAlpha.x, teamAlpha.y, objPlayerLine);
 player1.lineFunction = scrSineWave;
 player1.lineDrawColor = c_green;
+player1.phase = random_range(-2*pi, 2*pi);
 teamAlpha.playerA = player1;
 scrSetPlayerLineLength(player1, teamAlpha.width);
 
@@ -23,6 +24,7 @@ if(numPlayers >= 3) {
   var player3 = instance_create(teamAlpha.x, teamAlpha.y, objPlayerLine);
   player3.lineFunction = scrTriangleWave;
   player3.lineDrawColor = c_lime;
+  player3.phase = random_range(-2*pi, 2*pi);
   teamAlpha.playerB = player3;
   scrSetPlayerLineLength(player3, teamAlpha.width);
   scrSetPlayerControls(player3, ord('A'), ord('D'), ord('W'), ord('S'));
@@ -44,6 +46,7 @@ goalLineBeta.position = teamBeta.position;
 var player2 = instance_create(teamBeta.x, teamBeta.y, objPlayerLine);
 player2.lineFunction = scrSquareWave;//scrSineWave;
 player2.lineDrawColor = c_blue;
+player2.phase = random_range(-2*pi, 2*pi);
 teamBeta.playerA = player2;
 scrSetPlayerLineLength(player2, teamBeta.width);
 
@@ -52,6 +55,7 @@ if(numPlayers >= 4) {
   var player4 = instance_create(teamBeta.x, teamBeta.y, objPlayerLine);
   player4.lineFunction = scrSquareWave;
   player4.lineDrawColor = c_aqua;
+  player4.phase = random_range(-2*pi, 2*pi);
   teamBeta.playerB = player4;
   scrSetPlayerLineLength(player4, teamBeta.width);
   scrSetPlayerControls(player4, ord('A'), ord('D'), ord('W'), ord('S'));
