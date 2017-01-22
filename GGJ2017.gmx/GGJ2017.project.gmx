@@ -9,6 +9,12 @@
     <sound>sound\sndSineWave</sound>
     <sound>sound\sndSquareWave</sound>
     <sound>sound\sndTriangleWave</sound>
+    <sound>sound\sndWallBounce</sound>
+    <sound>sound\sndWallBounce2</sound>
+    <sound>sound\sndWallBounce3</sound>
+    <sound>sound\sndLineBounce</sound>
+    <sound>sound\sndLineBounce2</sound>
+    <sound>sound\sndLineBounce3</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprGrayBox</sprite>
@@ -42,6 +48,7 @@
     <script>scripts\scrReflectionAngle.gml</script>
     <script>scripts\scrNormalAngle.gml</script>
     <script>scripts\scrRandomWaveform.gml</script>
+    <script>scripts\scrSetMelodyLayersVolume.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fontModern128</font>
@@ -60,6 +67,7 @@
     <object>objects\objBeatControl</object>
     <object>objects\objTrail</object>
     <object>objects\objTitleControl</object>
+    <object>objects\objMusicControl</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomTitle</room>

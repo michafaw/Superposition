@@ -30,7 +30,7 @@
 bpm = 110.0;
 
 portionOfBeat = 1; // 1 = on the beat, 0.5 = upbeat, 0 = just before beat
-syncAdjustment = -0.025; // in seconds
+syncAdjustment = 0.075; // in seconds
 internalCounter = 0;
 
 </string>
@@ -60,7 +60,9 @@ internalCounter = 0;
 
 var bps = bpm/60;
 var spb = 1/bps;
-var trackPosition = audio_sound_get_track_position(objMainControl.baseLayerTrack);
+//var trackPosition = audio_sound_get_track_position(objMainControl.baseLayerTrack);
+var trackPosition = audio_sync_group_get_track_pos(objMusicControl.soundGroup);
+
 trackPosition += syncAdjustment;
 
 var beatPosition = trackPosition % spb;
@@ -94,7 +96,7 @@ portionOfBeat = 1 - (internalCounter / (room_speed/bps));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Adjust syncAdjustment via left/right keys
+            <string>/// Adjust syncAdjustment via left/right keys
 
 /*
 if(keyboard_check(vk_left)) {

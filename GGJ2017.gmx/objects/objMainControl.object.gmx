@@ -133,27 +133,12 @@ show_debug_overlay(SHOW_DEBUG_OVERLAY);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Start Music and sync up objBeatControl
+            <string>/// Sync up objBeatControl
 
-var syncFudgeFactor = 0;
-
-/*
-soundGroup = audio_create_sync_group(true);
-snd[0] = audio_play_in_sync_group(soundGroup, sndBaseLayer);
-snd[1] = audio_play_in_sync_group(soundGroup, sndSineWave);
-snd[2] = audio_play_in_sync_group(soundGroup, sndTriangleWave);
-snd[3] = audio_play_in_sync_group(soundGroup, sndSquareWave);
-audio_sound_gain(snd[0], 0, 0);
-audio_sound_gain(snd[1], 0, 0);
-audio_sound_gain(snd[2], 0, 0);
-audio_sound_gain(snd[3], 0, 0);
-audio_start_sync_group(soundGroup);
-*/
-baseLayerTrack = audio_play_sound(sndBaseLayer, 0, true);
-
+//instance_create(0,0, objMusicControl);
+//baseLayerTrack = audio_play_sound(sndBaseLayer, 0, true);
+//baseLayerTrack = objMusicControl.snd[0];
 var beatControl = instance_create(0, 0, objBeatControl);
-beatControl.internalCounter += syncFudgeFactor;
-
 </string>
           </argument>
         </arguments>

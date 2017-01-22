@@ -210,6 +210,8 @@ x += lengthdir_x(penDistance, other.image_angle);
 y += lengthdir_y(penDistance, other.image_angle);
 //show_debug_message("            Pushed back to " + string(x) + ", " + string(y));
 direction = scrReflectionAngle(direction, other.image_angle);
+
+audio_play_sound(sndWallBounce, 0, false);
 </string>
           </argument>
         </arguments>
