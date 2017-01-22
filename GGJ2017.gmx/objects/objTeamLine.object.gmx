@@ -107,7 +107,7 @@ if(playerB != noone)
             <kind>1</kind>
             <string>/// Draw combined line
 
-scrDrawLineFromPoints(linePointArray, width/SAMPLE_POINTS, LINE_WIDTH);
+scrDrawLineFromPoints(linePointArray, width/SAMPLE_POINTS, LINE_WIDTH, lineDrawColor);
 </string>
           </argument>
         </arguments>

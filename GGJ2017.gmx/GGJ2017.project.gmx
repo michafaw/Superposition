@@ -39,13 +39,14 @@
   <rooms name="rooms">
     <room>rooms\roomMain</room>
   </rooms>
-  <constants number="6">
-    <constant name="SAMPLE_POINTS">300</constant>
+  <constants number="7">
+    <constant name="SAMPLE_POINTS">500</constant>
     <constant name="LINE_WIDTH">8</constant>
     <constant name="LINE_AMPLITUDE">50</constant>
     <constant name="COLLISION_PUSHBACK">2</constant>
-    <constant name="SHOW_DEBUG_OVERLAY">true</constant>
-    <constant name="ALLOW_PLAYER_FREQUENCY_CHANGE">false</constant>
+    <constant name="SHOW_DEBUG_OVERLAY">false</constant>
+    <constant name="ALLOW_PLAYER_FREQUENCY_CHANGE">true</constant>
+    <constant name="GOAL_LINE_STARTING_OFFSET">10</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

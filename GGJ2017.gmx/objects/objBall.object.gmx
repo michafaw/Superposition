@@ -172,32 +172,13 @@ if(other.image_angle == 0) {
   hspeed = -1*abs(hspeed);
 }
 */
-show_debug_message("Ball collided with wall at " + string(x) + ", " + string(y));
+//show_debug_message("Ball collided with wall at " + string(x) + ", " + string(y));
 // Push ball out one unit of normal vector
 var penDistance = radius - abs(other.x - x);
 x += lengthdir_x(penDistance, other.image_angle);
 y += lengthdir_y(penDistance, other.image_angle);
-show_debug_message("            Pushed back to " + string(x) + ", " + string(y));
+//show_debug_message("            Pushed back to " + string(x) + ", " + string(y));
 direction = scrReflectionAngle(direction, other.image_angle);
-
-/*
-// Normal based version
-var inVX = lengthdir_x(1, direction);
-var inVY = lengthdir_y(1, direction);
-var normalVX = lengthdir_x(1, other.image_angle);
-var normalVY = lengthdir_y(1, other.image_angle);
-
-show_debug_message(
-  "Wall bounce - Ball: [" + string(inVX) + ", " + string(inVY) + "] " + 
-  "Wall: [" + string(normalVX) + ", " + string(normalVY) + "]")
-var innerProduct = 2*dot_product(inVX, inVY, normalVX, normalVY);
-var vx = -1*(innerProduct*normalVX - inVX);
-var vy = -1*(innerProduct*normalVY - inVY);
-
-hspeed = vx*speed;
-vspeed = vy*speed;
-*/
-
 </string>
           </argument>
         </arguments>

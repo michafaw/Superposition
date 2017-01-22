@@ -47,7 +47,7 @@ with(teamInstance) {
     }
   }
   if(collided) {
-    show_debug_message("Ball collided with line at " + string(minCollisionX) + ", " + string(minCollisionY));
+    //show_debug_message("Ball collided with line at " + string(minCollisionX) + ", " + string(minCollisionY));
     
     // Adjust for single hits on the ends
     
@@ -90,11 +90,10 @@ with(teamInstance) {
     var penDistance = ballInstance.radius - point_distance(ballInstance.x, ballInstance.y, centerX, centerY);
     ballInstance.x += lengthdir_x(penDistance, normalAngle);
     ballInstance.y += lengthdir_y(penDistance, normalAngle);
-    show_debug_message("            Pushed back to " + string(ballInstance.x) + ", " + string(ballInstance.y));
-    show_debug_message("PenDepth: " + string(penDistance) + " - Pushed back to " + string(ballInstance.x) + ", " + string(ballInstance.y));
+    //show_debug_message("            Pushed back to " + string(ballInstance.x) + ", " + string(ballInstance.y));
+    //show_debug_message("PenDepth: " + string(penDistance) + " - Pushed back to " + string(ballInstance.x) + ", " + string(ballInstance.y));
     
     ballInstance.direction = scrReflectionAngle(ballInstance.direction, normalAngle);
-    
     
     /*
     // Placeholder reflect code
@@ -104,8 +103,6 @@ with(teamInstance) {
       ballInstance.vspeed = -1*abs(ballInstance.vspeed);
     }
     */
-      
-      
   }
 }
 

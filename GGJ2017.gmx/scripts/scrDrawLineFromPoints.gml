@@ -1,8 +1,9 @@
-/// scrDrawLineFromPoints(linePointArray, xDrawSpacing, lineDrawWidth)
+/// scrDrawLineFromPoints(linePointArray, xDrawSpacing, lineDrawWidth, lineDrawColor)
 
 var linePointArray = argument0;
 var xDrawSpacing = argument1;
 var lineDrawWidth = argument2;
+var lineDrawColor = argument3;
 
 var prevX = x;
 var prevY = y + linePointArray[0];

@@ -8,7 +8,7 @@ teamAlpha.x = (room_width - teamAlpha.width)/2;
 teamAlpha.y = room_height - teamAlpha.height/2;
 teamAlpha.position = -1; // bottom
 teamAlpha.lineDrawColor = c_lime;
-var goalLineAlpha = instance_create(teamAlpha.x, teamAlpha.y, objGoalLine);
+var goalLineAlpha = instance_create(teamAlpha.x, teamAlpha.y + -GOAL_LINE_STARTING_OFFSET, objGoalLine);
 goalLineAlpha.position = teamAlpha.position;
 
 // Player 1
@@ -28,7 +28,9 @@ if(numPlayers >= 3) {
   teamAlpha.playerB = player3;
   scrSetPlayerLineLength(player3, teamAlpha.width);
   scrSetPlayerControls(player3, ord('A'), ord('D'), ord('W'), ord('S'));
-} 
+}
+
+teamAlpha.lineDrawColor = merge_colour(player1.lineDrawColor, player3.lineDrawColor, 0.5);
 
 
 ///////////////////
@@ -39,7 +41,7 @@ teamBeta.x = (room_width - teamBeta.width)/2;
 teamBeta.y = teamBeta.height/2;
 teamBeta.position = 1; // top
 teamBeta.lineDrawColor = c_blue;
-var goalLineBeta = instance_create(teamBeta.x, teamBeta.y, objGoalLine);
+var goalLineBeta = instance_create(teamBeta.x, teamBeta.y + GOAL_LINE_STARTING_OFFSET, objGoalLine);
 goalLineBeta.position = teamBeta.position;
 
 // Player 2
@@ -60,3 +62,5 @@ if(numPlayers >= 4) {
   scrSetPlayerLineLength(player4, teamBeta.width);
   scrSetPlayerControls(player4, ord('A'), ord('D'), ord('W'), ord('S'));
 }
+
+teamBeta.lineDrawColor = merge_colour(player2.lineDrawColor, player4.lineDrawColor, 0.5);

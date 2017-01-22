@@ -48,7 +48,7 @@ linePointArray[0] = 0;
 numPointsInLinePointArray = SAMPLE_POINTS;
 lineDrawColor = c_green;
 xDrawSpacing = lineLength/numPointsInLinePointArray;
-lineDrawWidth = LINE_WIDTH/2;
+lineDrawWidth = 2.0;//LINE_WIDTH/2;
 </string>
           </argument>
         </arguments>
@@ -121,7 +121,8 @@ linePointArray = scrBuildLinePointArray(lineFunction, amplitude, frequency, phas
             <kind>1</kind>
             <string>/// Draw line function
 
-//scrDrawLineFromPoints(linePointArray, xDrawSpacing, lineDrawWidth);
+var drawColor = c_dkgray;
+scrDrawLineFromPoints(linePointArray, xDrawSpacing, lineDrawWidth, drawColor);
 
 </string>
           </argument>
