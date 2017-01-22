@@ -149,7 +149,7 @@ audio_sound_gain(snd[2], 0, 0);
 audio_sound_gain(snd[3], 0, 0);
 audio_start_sync_group(soundGroup);
 */
-audio_play_sound(sndBaseLayer, 0, true);
+baseLayerTrack = audio_play_sound(sndBaseLayer, 0, true);
 
 var beatControl = instance_create(0, 0, objBeatControl);
 beatControl.internalCounter += syncFudgeFactor;
