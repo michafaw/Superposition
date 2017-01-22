@@ -34,7 +34,7 @@ maxFrequency = 5;
 
 lineLength = 600;
 amplitude = LINE_AMPLITUDE;
-frequency = lerp(minFrequency, maxFrequency, 0.5);//2.0;
+frequency = lerp(minFrequency, maxFrequency, random_range(0, 1.0));//0.5);
 phase = 0;
 lineFunction = scrSineWave;
 
