@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Game settings
 
-numPlayers = 4;
+numPlayers = 2;
 </string>
           </argument>
         </arguments>
@@ -51,38 +51,6 @@ numPlayers = 4;
             <string>/// Add teams &amp; player lines to screen
 
 scrBuildTeams();
-/*
-teamAlpha = instance_create(100, 500, objTeamLine);
-teamBeta = instance_create(100, 100, objTeamLine);
-
-// Player 1
-var player1 = instance_create(100, 500, objPlayerLine);
-player1.lineFunction = scrSineWave;
-player1.lineDrawColor = c_green;
-teamAlpha.playerA = player1;
-
-// Player 2
-var player2 = instance_create(100, 100, objPlayerLine);
-player2.lineFunction = scrSineWave;
-player2.lineDrawColor = c_blue;
-teamBeta.playerA = player2;
-
-// Player 3
-if(numPlayers &gt;= 3) {
-  var player3 = instance_create(100, 500, objPlayerLine);
-  player3.lineFunction = scrTriangleWave;
-  player3.lineDrawColor = c_lime;
-  teamAlpha.playerB = player3;
-} 
-
-// Player 4
-if(numPlayers &gt;= 4) {
-  var player4 = instance_create(100, 100, objPlayerLine);
-  player4.lineFunction = scrSquareWave;
-  player4.lineDrawColor = c_aqua;
-  teamBeta.playerB = player4;
-}
-*/
 </string>
           </argument>
         </arguments>

@@ -56,7 +56,6 @@
     <instance objName="objWall" x="39" y="350" name="inst_5450D2EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWall" x="560" y="450" name="inst_27AF284C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="objWall" x="560" y="550" name="inst_99CE16A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="objBall" x="520" y="550" name="inst_3688469D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWall" x="39" y="250" name="inst_6612F559" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWall" x="39" y="150" name="inst_560A77F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWall" x="39" y="450" name="inst_343DA091" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

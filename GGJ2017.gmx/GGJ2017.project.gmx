@@ -22,10 +22,15 @@
     <script>scripts\scrBuildTeams.gml</script>
     <script>scripts\scrSetPlayerLineLength.gml</script>
     <script>scripts\scrHandleBallLineCollision.gml</script>
+    <script>scripts\scrDrawLineFromPoints.gml</script>
+    <script>scripts\scrCheckControls.gml</script>
+    <script>scripts\scrSetPlayerControls.gml</script>
+    <script>scripts\scrReflectionAngle.gml</script>
+    <script>scripts\scrNormalAngle.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\objPlayerLine</object>
     <object>objects\objMainSetup</object>
+    <object>objects\objPlayerLine</object>
     <object>objects\objTeamLine</object>
     <object>objects\objBall</object>
     <object>objects\objWall</object>
@@ -34,6 +39,12 @@
   <rooms name="rooms">
     <room>rooms\roomMain</room>
   </rooms>
+  <constants number="4">
+    <constant name="SAMPLE_POINTS">300</constant>
+    <constant name="LINE_WIDTH">8</constant>
+    <constant name="LINE_AMPLITUDE">50</constant>
+    <constant name="COLLISION_PUSHBACK">2</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

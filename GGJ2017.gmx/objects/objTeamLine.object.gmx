@@ -27,8 +27,12 @@
             <kind>1</kind>
             <string>/// Instance variables
 
+lineDrawColor = c_blue;
+
 width = room_width - sprite_get_width(sprWall)*2;
-height = 100; // half is up, half is down
+height = LINE_AMPLITUDE*2; // half is up, half is down
+if(objMainSetup.numPlayers &gt; 3)
+  height = LINE_AMPLITUDE*4;
 
 teamAlphaXPosition = (room_width - width)/2;
 teamAlphaYPosition = room_height - height/2;
@@ -46,6 +50,64 @@ position = -1; // -1 = bottom, 1 = top
 
 image_xscale = (width)/sprite_width;
 image_yscale = (height + boundingBoxYMargin*2)/sprite_height;
+
+linePointArray[0] = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Add team line values together
+
+for(var i = 0; i &lt; SAMPLE_POINTS; i++) {
+if(playerB != noone)
+    linePointArray[i] = playerA.linePointArray[i] + playerB.linePointArray[i]
+  else
+    linePointArray[i] = playerA.linePointArray[i];
+  
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw combined line
+
+scrDrawLineFromPoints(linePointArray, width/SAMPLE_POINTS, LINE_WIDTH);
 </string>
           </argument>
         </arguments>

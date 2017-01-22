@@ -11,6 +11,32 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Set instance variables
+
+hasBeenCollisionChecked = false;
+
+// Ball sprite must go all the way to the edge of the image for this to work
+radius = sprite_width/2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>102</id>
         <kind>0</kind>
         <userelative>-1</userelative>
@@ -30,29 +56,6 @@
           <argument>
             <kind>0</kind>
             <string>8</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Set instance variables
-
-hasBeenCollisionChecked = false;
-</string>
           </argument>
         </arguments>
       </action>
@@ -121,21 +124,23 @@ hasBeenCollisionChecked = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Team has scored
-var scoringTeam;
-if (other.position == -1)
-  scoringTeam = "Treble";
-  else
-  scoringTeam = "Bass";
-show_debug_message("Team " + scoringTeam + " has scored!");
-x = room_width/2;
-y = room_height/2;
+            <string>/// Check if ball's mid point has cross the line
 
-do {
-  direction = irandom(359);
-} until(direction != 180 &amp;&amp; direction != 0);
+var collisionGoalLine = collision_point(x, y, objGoalLine, false, false);
+if(collisionGoalLine == other) {
+  var scoringTeam;
+  if (other.position == -1)
+    scoringTeam = "Treble";
+    else
+    scoringTeam = "Bass";
+  show_debug_message("Team " + scoringTeam + " has scored!");
+  x = room_width/2;
+  y = room_height/2;
   
-speed = 8;
+  direction = choose(irandom_range(25, 155), irandom_range(205, 335))
+    
+  speed = 8;
+}
 </string>
           </argument>
         </arguments>
@@ -160,28 +165,39 @@ speed = 8;
             <kind>1</kind>
             <string>/// Reflect against a vertical wall
  
-
+/*
 if(other.image_angle == 0) {
   hspeed = abs(hspeed);
 } else {
   hspeed = -1*abs(hspeed);
 }
-
+*/
+show_debug_message("Ball collided with wall at " + string(x) + ", " + string(y));
+// Push ball out one unit of normal vector
+var penDistance = radius - abs(other.x - x);
+x += lengthdir_x(penDistance, other.image_angle);
+y += lengthdir_y(penDistance, other.image_angle);
+show_debug_message("            Pushed back to " + string(x) + ", " + string(y));
+direction = scrReflectionAngle(direction, other.image_angle);
 
 /*
-// Normal based version (incorrect math somewhere 
-var inVX = lengthdir_x(speed, direction)/speed;
-var inVY = lengthdir_y(speed, direction)/speed;
+// Normal based version
+var inVX = lengthdir_x(1, direction);
+var inVY = lengthdir_y(1, direction);
 var normalVX = lengthdir_x(1, other.image_angle);
 var normalVY = lengthdir_y(1, other.image_angle);
 
+show_debug_message(
+  "Wall bounce - Ball: [" + string(inVX) + ", " + string(inVY) + "] " + 
+  "Wall: [" + string(normalVX) + ", " + string(normalVY) + "]")
 var innerProduct = 2*dot_product(inVX, inVY, normalVX, normalVY);
-var vx = -1*innerProduct*normalVX - inVX;
-var vy = -1*innerProduct*normalVY - inVY;
+var vx = -1*(innerProduct*normalVX - inVX);
+var vy = -1*(innerProduct*normalVY - inVY);
 
 hspeed = vx*speed;
 vspeed = vy*speed;
 */
+
 </string>
           </argument>
         </arguments>
