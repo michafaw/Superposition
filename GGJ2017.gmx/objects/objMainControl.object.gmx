@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>/// Game settings
 
-global.numPlayers = 2;
+randomize();
+global.numPlayers = 4;
 
 global.teamAlphaScore = 0;
 global.teamBetaScore = 0;
@@ -74,9 +75,21 @@ scrBuildTeams();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Create ball
+            <string>/// Create balls
 
-instance_create(room_width/2, room_height/2, objBall);
+instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
+
+// Create second ball
+if(BALL_COUNT &gt;= 2) {
+  instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
+  if(BALL_COUNT &gt;= 3) {
+    instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
+    if(BALL_COUNT &gt;= 4) {
+      instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
+    }
+  }
+}
+
 </string>
           </argument>
         </arguments>
@@ -100,6 +113,72 @@ instance_create(room_width/2, room_height/2, objBall);
             <string>/// Add debugging overlay
 
 show_debug_overlay(SHOW_DEBUG_OVERLAY);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Start Music and sync up objBeatControl
+
+var syncFudgeFactor = 0;
+
+/*
+soundGroup = audio_create_sync_group(true);
+snd[0] = audio_play_in_sync_group(soundGroup, sndBaseLayer);
+snd[1] = audio_play_in_sync_group(soundGroup, sndSineWave);
+snd[2] = audio_play_in_sync_group(soundGroup, sndTriangleWave);
+snd[3] = audio_play_in_sync_group(soundGroup, sndSquareWave);
+audio_sound_gain(snd[0], 0, 0);
+audio_sound_gain(snd[1], 0, 0);
+audio_sound_gain(snd[2], 0, 0);
+audio_sound_gain(snd[3], 0, 0);
+audio_start_sync_group(soundGroup);
+*/
+audio_play_sound(sndBaseLayer, 0, true);
+
+var beatControl = instance_create(0, 0, objBeatControl);
+beatControl.internalCounter += syncFudgeFactor;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reset Room
+
+room_goto(roomMain);
 </string>
           </argument>
         </arguments>

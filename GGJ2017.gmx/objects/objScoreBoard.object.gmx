@@ -27,12 +27,14 @@
             <kind>1</kind>
             <string>/// Draw score
 
+draw_set_font(fontLucindaConsole72);
+var drawScaleFactor = 2;
 var drawColor = c_white;
 draw_set_halign(fa_center);
 draw_set_valign(fa_bottom);
-draw_text_colour(x, y - 10, string(global.teamBetaScore), drawColor, drawColor, drawColor, drawColor, 0.5);
+draw_text_transformed_colour(x, y + 15, string(global.teamBetaScore), drawScaleFactor, drawScaleFactor, 0, drawColor, drawColor, drawColor, drawColor, 0.5);
 draw_set_valign(fa_top);
-draw_text_colour(x, y + 10, string(global.teamAlphaScore), drawColor, drawColor, drawColor, drawColor, 0.5);
+draw_text_transformed_colour(x, y + 10, string(global.teamAlphaScore), drawScaleFactor, drawScaleFactor, 0, drawColor, drawColor, drawColor, drawColor, 0.5);
 </string>
           </argument>
         </arguments>

@@ -29,9 +29,12 @@
 
 movementSpeed = 1.0;
 
+minFrequency = 2;
+maxFrequency = 5;
+
 lineLength = 600;
 amplitude = LINE_AMPLITUDE;
-frequency = 2.0;
+frequency = lerp(minFrequency, maxFrequency, 0.5);//2.0;
 phase = 0;
 lineFunction = scrSineWave;
 
@@ -71,9 +74,10 @@ lineDrawWidth = 2.0;//LINE_WIDTH/2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Check keys to move phase &amp; frequency
+            <string>/// Check keys/gamepad to move phase &amp; frequency
 
-scrCheckControls(self.id, keySet);
+scrCheckKeyControls(self.id, keySet);
+scrCheckGamepadControls(self.id, 0, 0);
 </string>
           </argument>
         </arguments>
@@ -96,7 +100,12 @@ scrCheckControls(self.id, keySet);
             <kind>1</kind>
             <string>/// Build line data
 
-linePointArray = scrBuildLinePointArray(lineFunction, amplitude, frequency, phase, numPointsInLinePointArray);
+var pulseIntensifier = 1.0;
+var drawScale = 0.3 + pulseIntensifier*objBeatControl.portionOfBeat;
+if(drawScale &lt; 1.0 || !USE_PULSE_EFFECT)
+  drawScale = 1.0;
+var newAmplitude = drawScale*amplitude;
+linePointArray = scrBuildLinePointArray(lineFunction, newAmplitude, frequency, phase, numPointsInLinePointArray);
 </string>
           </argument>
         </arguments>

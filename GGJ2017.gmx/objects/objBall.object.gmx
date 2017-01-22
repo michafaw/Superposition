@@ -33,31 +33,10 @@ hasBeenCollisionChecked = false;
 radius = sprite_width/2;
 
 drawScale = 1.0;
+
+direction = choose(irandom_range(25, 155), irandom_range(205, 335));
+speed = 8;
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>102</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_set_motion</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>60</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>8</string>
           </argument>
         </arguments>
       </action>
@@ -189,12 +168,9 @@ if(collisionGoalLine == other) {
     global.teamAlphaScore++;
   }
   show_debug_message("Team " + scoringTeam + " has scored!");
-  x = room_width/2;
-  y = room_height/2;
   
-  direction = choose(irandom_range(25, 155), irandom_range(205, 335))
-    
-  speed = 8;
+  instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
+  instance_destroy();
 }
 </string>
           </argument>

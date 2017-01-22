@@ -41,6 +41,8 @@ teamBetaYPosition = height/2;
 
 boundingBoxYMargin = 10;
 
+fixerCounter = 0;
+fixerIncrement = 2*pi/360;
 
 playerA = noone;
 playerB = noone;
@@ -76,11 +78,14 @@ linePointArray[0] = 0;
             <kind>1</kind>
             <string>/// Add team line values together
 
+fixerCounter += fixerIncrement;
+var fixerPointArray = scrBuildLinePointArray(scrFlatLine, 20, 1, fixerCounter, SAMPLE_POINTS);
+
 for(var i = 0; i &lt; SAMPLE_POINTS; i++) {
-if(playerB != noone)
-    linePointArray[i] = playerA.linePointArray[i] + playerB.linePointArray[i]
+  if(playerB != noone)
+    linePointArray[i] = playerA.linePointArray[i] + playerB.linePointArray[i] + fixerPointArray[i];
   else
-    linePointArray[i] = playerA.linePointArray[i];
+    linePointArray[i] = playerA.linePointArray[i] + fixerPointArray[i];
   
 }
 </string>

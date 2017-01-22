@@ -4,19 +4,27 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sndBaseLayer</sound>
+    <sound>sound\sndSineWave</sound>
+    <sound>sound\sndSquareWave</sound>
+    <sound>sound\sndTriangleWave</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprGrayBox</sprite>
     <sprite>sprites\sprCollisionBox</sprite>
     <sprite>sprites\sprBall</sprite>
     <sprite>sprites\sprWall</sprite>
+    <sprite>sprites\sprWall2</sprite>
     <sprite>sprites\sprTrail1</sprite>
     <sprite>sprites\sprTrail2</sprite>
     <sprite>sprites\sprTrail3</sprite>
     <sprite>sprites\sprTrail4</sprite>
     <sprite>sprites\sprTrail5</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bgTitleText</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scrFlatLine.gml</script>
@@ -27,12 +35,20 @@
     <script>scripts\scrBuildTeams.gml</script>
     <script>scripts\scrSetPlayerLineLength.gml</script>
     <script>scripts\scrDrawLineFromPoints.gml</script>
-    <script>scripts\scrCheckControls.gml</script>
+    <script>scripts\scrCheckKeyControls.gml</script>
+    <script>scripts\scrCheckGamepadControls.gml</script>
     <script>scripts\scrSetPlayerControls.gml</script>
     <script>scripts\scrHandleBallLineCollision.gml</script>
     <script>scripts\scrReflectionAngle.gml</script>
     <script>scripts\scrNormalAngle.gml</script>
+    <script>scripts\scrRandomWaveform.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fontModern128</font>
+    <font>fonts\fontModern24</font>
+    <font>fonts\fontLucindaConsole24</font>
+    <font>fonts\fontLucindaConsole72</font>
+  </fonts>
   <objects name="objects">
     <object>objects\objMainControl</object>
     <object>objects\objPlayerLine</object>
@@ -43,11 +59,13 @@
     <object>objects\objScoreBoard</object>
     <object>objects\objBeatControl</object>
     <object>objects\objTrail</object>
+    <object>objects\objTitleControl</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\roomTitle</room>
     <room>rooms\roomMain</room>
   </rooms>
-  <constants number="8">
+  <constants number="10">
     <constant name="ALLOW_PLAYER_FREQUENCY_CHANGE">true</constant>
     <constant name="USE_PULSE_EFFECT">true</constant>
     <constant name="SHOW_DEBUG_OVERLAY">false</constant>
@@ -56,6 +74,8 @@
     <constant name="LINE_AMPLITUDE">50</constant>
     <constant name="COLLISION_PUSHBACK">2</constant>
     <constant name="GOAL_LINE_STARTING_OFFSET">10</constant>
+    <constant name="RANDOM_WAVEFORM">true</constant>
+    <constant name="BALL_COUNT">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

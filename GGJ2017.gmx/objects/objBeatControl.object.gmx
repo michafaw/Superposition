@@ -55,7 +55,7 @@ internalCounter = 0;
             <kind>1</kind>
             <string>/// Update portionOfBeat value
 
-var bpm = 120.0;
+var bpm = 220.0;
 var bps = bpm/room_speed;
 
 internalCounter++;
