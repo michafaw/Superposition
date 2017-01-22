@@ -211,7 +211,8 @@ y += lengthdir_y(penDistance, other.image_angle);
 //show_debug_message("            Pushed back to " + string(x) + ", " + string(y));
 direction = scrReflectionAngle(direction, other.image_angle);
 
-audio_play_sound(sndWallBounce, 0, false);
+var soundToPlay = choose(sndWallBounce, sndWallBounce2)
+audio_play_sound(soundToPlay, 0, false);
 </string>
           </argument>
         </arguments>

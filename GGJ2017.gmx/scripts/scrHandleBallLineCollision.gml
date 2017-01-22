@@ -47,7 +47,8 @@ with(teamInstance) {
     }
   }
   if(collided) {
-    audio_play_sound(sndLineBounce, 0, false);
+    var soundToPlay = choose(sndLineBounce, sndLineBounce2, sndLineBounce3, sndLineBounce4)
+    audio_play_sound(soundToPlay, 0, false);
     //show_debug_message("Ball collided with line at " + string(minCollisionX) + ", " + string(minCollisionY));
     
     // Adjust for single hits on the ends

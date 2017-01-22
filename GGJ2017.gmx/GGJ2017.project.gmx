@@ -11,10 +11,10 @@
     <sound>sound\sndTriangleWave</sound>
     <sound>sound\sndWallBounce</sound>
     <sound>sound\sndWallBounce2</sound>
-    <sound>sound\sndWallBounce3</sound>
     <sound>sound\sndLineBounce</sound>
     <sound>sound\sndLineBounce2</sound>
     <sound>sound\sndLineBounce3</sound>
+    <sound>sound\sndLineBounce4</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprGrayBox</sprite>
