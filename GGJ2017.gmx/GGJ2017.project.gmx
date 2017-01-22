@@ -55,7 +55,9 @@
     <font>fonts\fontModern128</font>
     <font>fonts\fontModern24</font>
     <font>fonts\fontLucindaConsole24</font>
+    <font>fonts\fontLucindaConsole12</font>
     <font>fonts\fontLucindaConsole72</font>
+    <font>fonts\font4</font>
   </fonts>
   <objects name="objects">
     <object>objects\objMainControl</object>
@@ -69,6 +71,7 @@
     <object>objects\objTrail</object>
     <object>objects\objTitleControl</object>
     <object>objects\objMusicControl</object>
+    <object>objects\objGameOverControl</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomTitle</room>

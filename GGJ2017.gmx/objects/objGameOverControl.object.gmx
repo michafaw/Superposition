@@ -25,148 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Game settings
+            <string>
 
-randomize();
-global.numPlayers = 4;
-
-global.teamAlphaScore = 0;
-global.teamBetaScore = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Add teams &amp; player lines to screen
-
-scrBuildTeams();
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Create balls
-
-scrCreateBall()
-// Create second ball
-if(BALL_COUNT &gt;= 2) {
-  scrCreateBall();
-  if(BALL_COUNT &gt;= 3) {
-    scrCreateBall();
-    if(BALL_COUNT &gt;= 4) {
-      scrCreateBall();
-    }
-  }
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Add debugging overlay
-
-show_debug_overlay(SHOW_DEBUG_OVERLAY);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Sync up objBeatControl
-
-//instance_create(0,0, objMusicControl);
-//baseLayerTrack = audio_play_sound(sndBaseLayer, 0, true);
-//baseLayerTrack = objMusicControl.snd[0];
-var beatControl = instance_create(0, 0, objBeatControl);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Create gameOverControl
-
-instance_create(0,0,objGameOverControl)
+winningTeam = "";
+gameOver = false;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="27">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -183,9 +51,89 @@ instance_create(0,0,objGameOverControl)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Reset Room
+            <string>/// Check scores for 11
 
-room_goto(roomMain);
+var winningScore = 11;
+winningTeam = "bass";
+if(global.teamAlphaScore &gt;= winningScore) {
+gameOver = true;
+  winningTeam = "bass";
+} else if(global.teamBetaScore &gt;= winningScore) {
+gameOver = true;
+  winningTeam = "treble"; 
+}
+
+
+if(gameOver) {
+  with(objBall) {
+    instance_destroy();
+  }
+  with(objTrail) {
+    instance_destroy();
+  }
+  
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check space to restart game
+
+
+if(gameOver &amp;&amp; keyboard_check_pressed(vk_space)) {
+  room_goto(roomMain);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw winner and press space to restart
+
+if(gameOver) {
+  x = room_width/2
+  y = room_height/2
+  
+  draw_set_font(fontLucindaConsole12);
+  draw_set_halign(fa_center);
+  draw_set_valign(fa_middle);
+  
+  draw_text_colour(x, y-6, "Team " + winningTeam + "!", c_white, c_white, c_white, c_white, 1.0); 
+  draw_text_colour(x, y+6, "Press space to play again", c_white, c_white, c_white, c_white, 1.0); 
+}
 </string>
           </argument>
         </arguments>
