@@ -169,7 +169,11 @@ if(collisionGoalLine == other) {
   }
   show_debug_message("Team " + scoringTeam + " has scored!");
   
-  instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
+  // Reset wall position
+  other.y = other.baseYPosition;
+  
+  // Create new ball
+  scrCreateBall();
   instance_destroy();
 }
 </string>

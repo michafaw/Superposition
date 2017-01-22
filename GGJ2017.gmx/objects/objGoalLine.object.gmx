@@ -30,10 +30,46 @@
 width = room_width - sprite_get_width(sprWall)*2;
 height = 20; // half is up, half is down
 
+creepRate = 0.02; // pixel/frame
+baseYPosition = y;
+maxCreepDistance = 20;
+if(global.numPlayers &gt; 2)
+  maxCreepDistance = 40;
+
 position = -1; // -1 = bottom, 1 = top
 
 image_xscale = width/sprite_width;
 image_yscale = height/sprite_height;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Creep up
+
+y += position*creepRate;
+
+if(position == 1)
+  y = clamp(y, baseYPosition, baseYPosition + position*maxCreepDistance)
+else
+  y = clamp(y, baseYPosition + position*maxCreepDistance, baseYPosition)
 </string>
           </argument>
         </arguments>

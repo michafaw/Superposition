@@ -49,6 +49,7 @@
     <script>scripts\scrNormalAngle.gml</script>
     <script>scripts\scrRandomWaveform.gml</script>
     <script>scripts\scrSetMelodyLayersVolume.gml</script>
+    <script>scripts\scrCreateBall.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fontModern128</font>

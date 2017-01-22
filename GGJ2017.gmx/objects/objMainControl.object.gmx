@@ -77,15 +77,14 @@ scrBuildTeams();
             <kind>1</kind>
             <string>/// Create balls
 
-instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
-
+scrCreateBall()
 // Create second ball
 if(BALL_COUNT &gt;= 2) {
-  instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
+  scrCreateBall();
   if(BALL_COUNT &gt;= 3) {
-    instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
+    scrCreateBall();
     if(BALL_COUNT &gt;= 4) {
-      instance_create(room_width/2 + irandom_range(-100, 100), room_height/2, objBall);
+      scrCreateBall();
     }
   }
 }
