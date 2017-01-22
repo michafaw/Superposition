@@ -31,7 +31,7 @@ lineDrawColor = c_blue;
 
 width = room_width - sprite_get_width(sprWall)*2;
 height = LINE_AMPLITUDE*2; // half is up, half is down
-if(objMainSetup.numPlayers &gt; 3)
+if(global.numPlayers &gt; 3)
   height = LINE_AMPLITUDE*4;
 
 teamAlphaXPosition = (room_width - width)/2;

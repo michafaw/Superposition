@@ -27,7 +27,10 @@
             <kind>1</kind>
             <string>/// Game settings
 
-numPlayers = 4;
+global.numPlayers = 2;
+
+global.teamAlphaScore = 0;
+global.teamBetaScore = 0;
 </string>
           </argument>
         </arguments>

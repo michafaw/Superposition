@@ -29,23 +29,26 @@
     <script>scripts\scrNormalAngle.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\objMainSetup</object>
+    <object>objects\objMainControl</object>
     <object>objects\objPlayerLine</object>
     <object>objects\objTeamLine</object>
     <object>objects\objBall</object>
     <object>objects\objWall</object>
     <object>objects\objGoalLine</object>
+    <object>objects\objScoreBoard</object>
+    <object>objects\objBeatControl</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomMain</room>
   </rooms>
-  <constants number="7">
+  <constants number="8">
+    <constant name="ALLOW_PLAYER_FREQUENCY_CHANGE">true</constant>
+    <constant name="USE_PULSE_EFFECT">true</constant>
+    <constant name="SHOW_DEBUG_OVERLAY">false</constant>
     <constant name="SAMPLE_POINTS">500</constant>
     <constant name="LINE_WIDTH">8</constant>
     <constant name="LINE_AMPLITUDE">50</constant>
     <constant name="COLLISION_PUSHBACK">2</constant>
-    <constant name="SHOW_DEBUG_OVERLAY">false</constant>
-    <constant name="ALLOW_PLAYER_FREQUENCY_CHANGE">true</constant>
     <constant name="GOAL_LINE_STARTING_OFFSET">10</constant>
   </constants>
   <help>

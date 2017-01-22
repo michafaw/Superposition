@@ -129,10 +129,13 @@ hasBeenCollisionChecked = false;
 var collisionGoalLine = collision_point(x, y, objGoalLine, false, false);
 if(collisionGoalLine == other) {
   var scoringTeam;
-  if (other.position == -1)
+  if (other.position == -1) {
     scoringTeam = "Treble";
-    else
+    global.teamBetaScore++;
+  } else {
     scoringTeam = "Bass";
+    global.teamAlphaScore++;
+  }
   show_debug_message("Team " + scoringTeam + " has scored!");
   x = room_width/2;
   y = room_height/2;
@@ -204,6 +207,35 @@ direction = scrReflectionAngle(direction, other.image_angle);
             <string>/// Check for collision against team bounding box &amp; lines
 
 scrHandleBallLineCollision(self.id, other.id);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw self, with pulse
+
+var pulseIntensifier = 1.0;
+var scale = 0.5 + pulseIntensifier*objBeatControl.portionOfBeat;
+if(scale &lt; 1.0 || !USE_PULSE_EFFECT)
+  scale = 1.0;
+draw_sprite_ext(sprite_index, 0, x, y, scale, scale, 0, c_white, 1.0);
 </string>
           </argument>
         </arguments>
