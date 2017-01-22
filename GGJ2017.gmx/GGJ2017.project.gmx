@@ -10,6 +10,11 @@
     <sprite>sprites\sprCollisionBox</sprite>
     <sprite>sprites\sprBall</sprite>
     <sprite>sprites\sprWall</sprite>
+    <sprite>sprites\sprTrail1</sprite>
+    <sprite>sprites\sprTrail2</sprite>
+    <sprite>sprites\sprTrail3</sprite>
+    <sprite>sprites\sprTrail4</sprite>
+    <sprite>sprites\sprTrail5</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -37,6 +42,7 @@
     <object>objects\objGoalLine</object>
     <object>objects\objScoreBoard</object>
     <object>objects\objBeatControl</object>
+    <object>objects\objTrail</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomMain</room>

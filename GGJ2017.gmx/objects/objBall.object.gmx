@@ -31,6 +31,8 @@ hasBeenCollisionChecked = false;
 
 // Ball sprite must go all the way to the edge of the image for this to work
 radius = sprite_width/2;
+
+drawScale = 1.0;
 </string>
           </argument>
         </arguments>
@@ -103,6 +105,56 @@ hasBeenCollisionChecked = false;
           <argument>
             <kind>4</kind>
             <string>2</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Update drawScale (pulse)
+
+var pulseIntensifier = 1.0;
+drawScale = 0.5 + pulseIntensifier*objBeatControl.portionOfBeat;
+if(drawScale &lt; 1.0 || !USE_PULSE_EFFECT)
+  drawScale = 1.0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Add Trail sprite
+
+var trail = instance_create(x, y, objTrail);
+trail.image_angle = direction;
+</string>
           </argument>
         </arguments>
       </action>
@@ -231,11 +283,7 @@ scrHandleBallLineCollision(self.id, other.id);
             <kind>1</kind>
             <string>/// Draw self, with pulse
 
-var pulseIntensifier = 1.0;
-var scale = 0.5 + pulseIntensifier*objBeatControl.portionOfBeat;
-if(scale &lt; 1.0 || !USE_PULSE_EFFECT)
-  scale = 1.0;
-draw_sprite_ext(sprite_index, 0, x, y, scale, scale, 0, c_white, 1.0);
+draw_sprite_ext(sprite_index, 0, x, y, drawScale, drawScale, 0, c_white, 1.0);
 </string>
           </argument>
         </arguments>
